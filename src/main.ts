@@ -4,6 +4,12 @@ import './registerServiceWorker';
 import router from './router';
 import store from './store';
 
+// plugins
+import '@/plugins/element-ui';
+
+// styles
+import 'normalize.css';
+
 Vue.config.productionTip = false;
 
 new Vue({
