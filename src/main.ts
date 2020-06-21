@@ -6,6 +6,7 @@ import store from './store';
 
 // plugins
 import '@/plugins/element-ui';
+import '@/plugins/yandex-map';
 
 // styles
 import 'normalize.css';
