@@ -1,12 +1,17 @@
 <template>
   <div class="home ">
     <div class="container">
-      <RouteList :list="list"/>
+      <RouteList
+        :list="list"
+        @remove-item="handleRemove"
+      />
     </div>
   </div>
 </template>
 
 <script>
+
+import { mapState, mapMutations } from 'vuex';
 import RouteList from '@/components/route/RouteList.vue';
 
 export default {
@@ -14,17 +19,17 @@ export default {
   components: {
     RouteList,
   },
-  data() {
-    return {
-      list: [
-        {
-          name: 'Московский',
-        },
-        {
-          name: 'Победы',
-        },
-      ],
-    };
+
+  computed: {
+    ...mapState({
+      list: (state) => state.list,
+    }),
+  },
+
+  methods: {
+    ...mapMutations({
+      handleRemove: 'REMOVE_ITEM',
+    }),
   },
 };
 </script>

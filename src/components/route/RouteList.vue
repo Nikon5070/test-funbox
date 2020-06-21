@@ -1,5 +1,5 @@
 <template>
-  <List class="route-list" :list="list">
+  <List class="route-list" :list="localList">
     <template #default="{ item, index }">
       <RouteComponent
         v-bind="item"
@@ -26,9 +26,11 @@ import { Route } from '@/types';
 export default class RouteList extends Vue {
   @Prop({ default: () => [] }) readonly list!: Route[];
 
-  // eslint-disable-next-line class-methods-use-this
+  localList: Route[] = [...this.list]
+
   handleRemove(index: number) {
-    console.log(index);
+    this.localList = this.localList.filter((item, i) => i !== index);
+    this.$emit('remove-item', index);
   }
 }
 </script>
